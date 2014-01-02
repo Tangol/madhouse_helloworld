@@ -2,11 +2,11 @@
 /*
 Plugin Name: Madhouse HelloWorld
 Short Name: madhouse_helloworld
-Plugin URI: -
+Plugin URI: http://wearemadhouse.wordpress.com/2013/10/11/how-to-develop-osclass-plugins/
 Description: A dummy plugin which is meant to be used as template.
-Version: 1.00
+Version: 1.10
 Author: Madhouse
-Author URI: -
+Author URI: http://wearemadhouse.wordpress.com/
 */
 
 mdh_current_plugin_path("oc-load.php");
@@ -17,7 +17,7 @@ mdh_current_plugin_path("oc-load.php");
  * @returns void.
  */
 function mdh_helloworld_install() {
-	Madhouse_HelloWorld_Model_Message::newInstance()->install();
+	mdh_import_sql(mdh_current_plugin_path("assets/model/install.sql", false));
 }
 osc_register_plugin(osc_plugin_path(__FILE__), 'mdh_helloworld_install');
 
@@ -27,7 +27,7 @@ osc_register_plugin(osc_plugin_path(__FILE__), 'mdh_helloworld_install');
  * @returns void.
  */
 function mdh_helloworld_uninstall() {
-	Madhouse_HelloWorld_Model_Message::newInstance()->uninstall();
+	mdh_import_sql(mdh_current_plugin_path("assets/model/uninstall.sql", false));
 }
 osc_add_hook(osc_plugin_path(__FILE__) . '_uninstall', 'mdh_helloworld_uninstall');
 
