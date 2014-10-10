@@ -9,7 +9,19 @@ Author: Madhouse
 Author URI: http://wearemadhouse.wordpress.com/
 */
 
+/*
+ * ==========================================================================
+ *  LOADING
+ * ==========================================================================
+ */
+
 mdh_current_plugin_path("oc-load.php");
+
+/*
+ * ==========================================================================
+ *  INSTALL / UNINSTALL
+ * ==========================================================================
+ */
 
 /**
  * (hook: install) Make installation operations
@@ -30,6 +42,36 @@ function mdh_helloworld_uninstall() {
 	mdh_import_sql(mdh_current_plugin_path("assets/model/uninstall.sql", false));
 }
 osc_add_hook(osc_plugin_path(__FILE__) . '_uninstall', 'mdh_helloworld_uninstall');
+
+/*
+ * ==========================================================================
+ *  ROUTES
+ * ==========================================================================
+ */
+
+if(osc_version() >= 330) {
+	function mdh_helloworld_controller()
+	{
+	    if(mdh_is_helloworld()) {
+	        $do = new Madhouse_HelloWorld_Controllers_Web();
+	        $do->doModel();
+	    }
+	}
+	osc_add_hook("custom_controller", "mdh_helloworld_controller");
+
+	osc_add_route(
+	    mdh_current_plugin_name() . "_show",
+	    'helloworld/show/?',
+	    'helloworld/show/',
+	    mdh_current_plugin_name() . '/views/web/show.php'
+	);
+}
+
+/*
+ * ==========================================================================
+ *  REGISTER & ENQUEUE
+ * ==========================================================================
+ */
 
 /**
  * (hook: init) Registers scripts and styles.
