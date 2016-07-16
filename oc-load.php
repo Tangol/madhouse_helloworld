@@ -1,9 +1,9 @@
 <?php
 
-mdh_current_plugin_path("classes/Madhouse/HelloWorld/Models/Message.php");
-mdh_current_plugin_path("classes/Madhouse/HelloWorld/Controllers/Web.php");
-mdh_current_plugin_path("classes/Madhouse/HelloWorld/Controllers/WebLegacy.php");
+require_once __DIR__ . "/classes/Madhouse/HelloWorld/Models/Message.php";
+require_once __DIR__ . "/classes/Madhouse/HelloWorld/Controllers/Web.php";
+require_once __DIR__ . "/classes/Madhouse/HelloWorld/Controllers/WebLegacy.php";
 
-mdh_current_plugin_path("helpers/hHelloWorld.php");
+require_once __DIR__ . "/helpers/hHelloWorld.php";
 
 ?>

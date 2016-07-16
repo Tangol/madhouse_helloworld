@@ -4,7 +4,7 @@
  * @deprecated Use routes instead. The file is kept for legacy purpose.
  */
 
-if(! mdh_plugin_is_ready(mdh_current_plugin_name())) {
+if(! mdh_plugin_is_ready("madhouse_helloworld")) {
 	mdh_handle_error_ugly();
 }
 

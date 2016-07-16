@@ -20,7 +20,7 @@ class Madhouse_HelloWorld_Controllers_Web extends WebSecBaseModel {
  */
 public function doModel() {
 	switch(Params::getParam("route")) {
-		case mdh_current_plugin_name() . "_show":
+		case "madhouse_helloworld_show":
 			// Get our first message from our model layer.
 			$message = Madhouse_HelloWorld_Models_Message::newInstance()->findByPrimaryKey(1);
 			// Exports it to make it available to the view.
@@ -31,7 +31,7 @@ public function doModel() {
 		break;
 		default:
 			// Don't know what to do. Pretend not to exist.
-			osc_add_flash_error_message(__("Oops! We got confused at some point. Try to refresh the page.", mdh_current_plugin_name()));
+			osc_add_flash_error_message(__("Oops! We got confused at some point. Try to refresh the page.", "madhouse_helloworld"));
 			$this->redirectTo(osc_base_url());
 		break;
 	}
