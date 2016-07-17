@@ -3,7 +3,7 @@
 Plugin Name: Madhouse HelloWorld
 Short Name: madhouse_helloworld
 Plugin URI: http://wearemadhouse.wordpress.com/2013/10/11/how-to-develop-osclass-plugins/
-Description: A dummy plugin which is meant to be used as template.
+Description: Example and starter plugin for Osclass, designed by Madhouse.
 Version: 1.2.0
 Author: Madhouse
 Author URI: http://wearemadhouse.wordpress.com/
