@@ -25,21 +25,23 @@ require_once __DIR__ . "/oc-load.php";
 
 /**
  * (hook: install) Make installation operations
- * 		It creates the database schema and sets some preferences.
+ *      It creates the database schema and sets some preferences.
  * @returns void.
  */
-function mdh_helloworld_install() {
-	mdh_import_sql(__DIR__ . "/assets/model/install.sql");
+function mdh_helloworld_install()
+{
+    mdh_import_sql(__DIR__ . "/assets/model/install.sql");
 }
 osc_register_plugin(osc_plugin_path(__FILE__), 'mdh_helloworld_install');
 
 /**
  * (hook: uninstall) Make un-installation operations
- * 		It destroys the database schema and unsets some preferences.
+ *      It destroys the database schema and unsets some preferences.
  * @returns void.
  */
-function mdh_helloworld_uninstall() {
-	mdh_import_sql(__DIR__ . "/assets/model/uninstall.sql");
+function mdh_helloworld_uninstall()
+{
+    mdh_import_sql(__DIR__ . "/assets/model/uninstall.sql");
 }
 osc_add_hook(osc_plugin_path(__FILE__) . '_uninstall', 'mdh_helloworld_uninstall');
 
@@ -49,22 +51,22 @@ osc_add_hook(osc_plugin_path(__FILE__) . '_uninstall', 'mdh_helloworld_uninstall
  * ==========================================================================
  */
 
-if(osc_version() >= 330) {
-	function mdh_helloworld_controller()
-	{
-	    if(mdh_is_helloworld()) {
-	        $do = new Madhouse_HelloWorld_Controllers_Web();
-	        $do->doModel();
-	    }
-	}
-	osc_add_hook("custom_controller", "mdh_helloworld_controller");
+if (osc_version() >= 330) {
+    function mdh_helloworld_controller()
+    {
+        if (mdh_is_helloworld()) {
+            $do = new Madhouse_HelloWorld_Controllers_Web();
+            $do->doModel();
+        }
+    }
+    osc_add_hook("custom_controller", "mdh_helloworld_controller");
 
-	osc_add_route(
-	    "madhouse_helloworld_show",
-	    'helloworld/show/?',
-	    'helloworld/show/',
-	    "madhouse_helloworld/views/web/show.php"
-	);
+    osc_add_route(
+        "madhouse_helloworld_show",
+        'helloworld/show/?',
+        'helloworld/show/',
+        "madhouse_helloworld/views/web/show.php"
+    );
 }
 
 /*
@@ -77,8 +79,7 @@ if(osc_version() >= 330) {
  * (hook: init) Registers scripts and styles.
  * @returns void.
  */
-function mdh_helloworld_load() {
+function mdh_helloworld_load()
+{
 }
 osc_add_hook('init', 'mdh_helloworld_load');
-
-?>

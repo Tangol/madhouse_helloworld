@@ -7,10 +7,10 @@
  */
 function mdh_helloworld_show_url()
 {
-	if(osc_version() >= 330) {
-		return osc_route_url("madhouse_helloworld_show");
-	}
-	return osc_ajax_plugin_url("madhouse_helloworld/main.php") . "&do=show";
+    if (osc_version() >= 330) {
+        return osc_route_url("madhouse_helloworld_show");
+    }
+    return osc_ajax_plugin_url("madhouse_helloworld/main.php") . "&do=show";
 }
 
 /**
@@ -20,7 +20,7 @@ function mdh_helloworld_show_url()
  */
 function mdh_helloworld_get_message()
 {
-	return View::newInstance()->_get("mdh_helloworld_message");
+    return View::newInstance()->_get("mdh_helloworld_message");
 }
 
 /**
@@ -30,10 +30,8 @@ function mdh_helloworld_get_message()
  */
 function mdh_is_helloworld()
 {
-	if(preg_match('/^madhouse_helloworld.*$/', Params::getParam("route"))) {
-		return true;
-	}
-	return false;
+    if (preg_match('/^madhouse_helloworld.*$/', Params::getParam("route"))) {
+        return true;
+    }
+    return false;
 }
-
-?>

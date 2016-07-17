@@ -1,1 +1,1 @@
-<?php _e("Nothing to configure", "madhouse_helloworld"); ?>
+<?php _e("Nothing to configure", "madhouse_helloworld");
