@@ -15,7 +15,7 @@ Author URI: http://wearemadhouse.wordpress.com/
  * ==========================================================================
  */
 
-mdh_current_plugin_path("oc-load.php");
+require_once __DIR__ . "/oc-load.php";
 
 /*
  * ==========================================================================
@@ -29,7 +29,7 @@ mdh_current_plugin_path("oc-load.php");
  * @returns void.
  */
 function mdh_helloworld_install() {
-	mdh_import_sql(mdh_current_plugin_path("assets/model/install.sql", false));
+	mdh_import_sql(__DIR__ . "/assets/model/install.sql");
 }
 osc_register_plugin(osc_plugin_path(__FILE__), 'mdh_helloworld_install');
 
@@ -39,7 +39,7 @@ osc_register_plugin(osc_plugin_path(__FILE__), 'mdh_helloworld_install');
  * @returns void.
  */
 function mdh_helloworld_uninstall() {
-	mdh_import_sql(mdh_current_plugin_path("assets/model/uninstall.sql", false));
+	mdh_import_sql(__DIR__ . "/assets/model/uninstall.sql");
 }
 osc_add_hook(osc_plugin_path(__FILE__) . '_uninstall', 'mdh_helloworld_uninstall');
 
@@ -60,10 +60,10 @@ if(osc_version() >= 330) {
 	osc_add_hook("custom_controller", "mdh_helloworld_controller");
 
 	osc_add_route(
-	    mdh_current_plugin_name() . "_show",
+	    "madhouse_helloworld_show",
 	    'helloworld/show/?',
 	    'helloworld/show/',
-	    mdh_current_plugin_name() . '/views/web/show.php'
+	    "madhouse_helloworld/views/web/show.php"
 	);
 }
 

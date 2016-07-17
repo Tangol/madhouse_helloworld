@@ -35,7 +35,7 @@ class Madhouse_HelloWorld_Controllers_WebLegacy extends WebSecBaseModel {
 			break;
 			default:
 				// Don't know what to do. Pretend not to exist.
-				osc_add_flash_error_message(__("Oops! We got confused at some point. Try to refresh the page.", mdh_current_plugin_name()));
+				osc_add_flash_error_message(__("Oops! We got confused at some point. Try to refresh the page.", "madhouse_helloworld"));
 				$this->redirectTo(osc_base_url());
 			break;
 		}
@@ -48,7 +48,10 @@ class Madhouse_HelloWorld_Controllers_WebLegacy extends WebSecBaseModel {
 	 * @see oc-includes/osclass/controller.
 	 */
 	public function doView($file) {
-		Madhouse_Utils_Controllers::doView($file);
+		osc_run_hook("before_html");
+		osc_current_web_theme_path($file);
+		Session::newInstance()->_clearVariables();
+		osc_run_hook("after_html");
 	}
 }
 
