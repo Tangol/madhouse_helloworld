@@ -1,1 +1,1 @@
-<?php // That's all folks ! ?>
+<?php ;// That's all folks !
