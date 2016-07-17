@@ -48,7 +48,10 @@ class Madhouse_HelloWorld_Controllers_WebLegacy extends WebSecBaseModel {
 	 * @see oc-includes/osclass/controller.
 	 */
 	public function doView($file) {
-		Madhouse_Utils_Controllers::doView($file);
+		osc_run_hook("before_html");
+		osc_current_web_theme_path($file);
+		Session::newInstance()->_clearVariables();
+		osc_run_hook("after_html");
 	}
 }
 
