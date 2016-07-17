@@ -29,7 +29,7 @@ require_once __DIR__ . "/oc-load.php";
  * @returns void.
  */
 function mdh_helloworld_install() {
-	//mdh_import_sql(__DIR__ . "/assets/model/install.sql");
+	mdh_import_sql(__DIR__ . "/assets/model/install.sql");
 }
 osc_register_plugin(osc_plugin_path(__FILE__), 'mdh_helloworld_install');
 
@@ -39,7 +39,7 @@ osc_register_plugin(osc_plugin_path(__FILE__), 'mdh_helloworld_install');
  * @returns void.
  */
 function mdh_helloworld_uninstall() {
-	//mdh_import_sql(__DIR__ . "/assets/model/uninstall.sql");
+	mdh_import_sql(__DIR__ . "/assets/model/uninstall.sql");
 }
 osc_add_hook(osc_plugin_path(__FILE__) . '_uninstall', 'mdh_helloworld_uninstall');
 
