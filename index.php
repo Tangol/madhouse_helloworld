@@ -7,6 +7,7 @@ Description: A dummy plugin which is meant to be used as template.
 Version: 1.2.0
 Author: Madhouse
 Author URI: http://wearemadhouse.wordpress.com/
+Plugin update URI: madhouse-helloworld
 */
 
 /*
