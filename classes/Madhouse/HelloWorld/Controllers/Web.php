@@ -17,19 +17,41 @@ class Madhouse_HelloWorld_Controllers_Web extends WebSecBaseModel
         parent::__construct();
     }
 
-/**
- * Business control for Madhouse HelloWorld Plugin for OSClass.
- */
+    /**
+     * Business control for Madhouse HelloWorld Plugin for OSClass.
+     */
     public function doModel()
     {
         switch (Params::getParam("route")) {
             case "madhouse_helloworld_show":
                 // Get our first message from our model layer.
                 $message = Madhouse_HelloWorld_Models_Message::newInstance()->findByPrimaryKey(1);
+
+                // Page number.
+                $page = Params::getParam("iDisplayPage");
+                if(!isset($page) || empty($page)) {
+                  $page = 1;
+                  Params::setParam("iDisplayPage", $page);
+                }
+
+                // Number of thread displayed per page.
+                $length = Params::getParam("iDisplayLength");
+                if(!isset($length) || empty($length)) {
+                  $length = 10;
+                  Params::setParam("iDisplayLength", $length);
+                }
+
+                // Get all messages.
+                $messages = Madhouse_HelloWorld_Models_Message::newInstance()->listAll($page, $length);
+
                 // Exports it to make it available to the view.
                 View::newInstance()->_exportVariableToView(
                     "mdh_helloworld_message",
                     $message["s_content"]
+                );
+                View::newInstance()->_exportVariableToView(
+                    "mdh_helloworld_messages",
+                    $messages
                 );
                 break;
             default:

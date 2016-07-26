@@ -24,6 +24,16 @@ function mdh_helloworld_get_message()
 }
 
 /**
+ * Gets the exported message to display.
+ * @return String the message.
+ * @since 1.00
+ */
+function mdh_helloworld_get_messages()
+{
+    return View::newInstance()->_get("mdh_helloworld_messages");
+}
+
+/**
  * Tells if the current page belongs to HelloWorld.
  * @return Bool true if the current page is helloworld, false otherwise.
  * @since  1.20
