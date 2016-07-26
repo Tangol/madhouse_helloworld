@@ -62,6 +62,25 @@ if (osc_version() >= 330) {
     }
     osc_add_hook("custom_controller", "mdh_helloworld_controller");
 
+    function mdh_helloworld_admin_controller()
+    {
+        if (mdh_is_helloworld()) {
+            $filter = function ($string) {
+                return __("Madhouse HelloWorld", "madhouse_helloworld");
+            };
+
+            // Page title (in <head />)
+            osc_add_filter("admin_title", $filter, 10);
+
+            // Page title (in <h1 />)
+            osc_add_filter("custom_plugin_title", $filter);
+
+            $do = new Madhouse_HelloWorld_Controllers_Admin();
+            $do->doModel();
+        }
+    }
+    osc_add_hook("renderplugin_controller", "mdh_helloworld_admin_controller");
+
     osc_add_route(
         "madhouse_helloworld_show",
         'helloworld/show/?',
