@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists("mdh_import_sql")) {
+if (!function_exists("mdh_helloworld_import_sql")) {
     /**
      * Imports an SQL file into the Osclass database.
      *
@@ -16,7 +16,7 @@ if (!function_exists("mdh_import_sql")) {
      *
      * @see     Madhouse_Utils_Models::import
      */
-    function mdh_import_sql($path)
+    function mdh_helloworld_import_sql($path)
     {
         // Try to import it. Throws Exception if failure.
         $conn = DBConnectionClass::newInstance()->getOsclassDb();
