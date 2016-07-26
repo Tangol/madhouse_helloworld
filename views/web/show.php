@@ -9,3 +9,7 @@
 <?php foreach ($allMessages as $currentMessage) : ?>
     <li><?php echo $currentMessage['s_content']; ?></li>
 <?php endforeach; ?>
+
+<div class="paginate">
+    <?php echo mdh_helloworld_pagination(); ?>
+</div>

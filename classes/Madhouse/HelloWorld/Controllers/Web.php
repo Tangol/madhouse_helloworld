@@ -27,6 +27,12 @@ class Madhouse_HelloWorld_Controllers_Web extends WebSecBaseModel
                 // Get our first message from our model layer.
                 $message = Madhouse_HelloWorld_Models_Message::newInstance()->findByPrimaryKey(1);
 
+                // Exports it to make it available to the view.
+                View::newInstance()->_exportVariableToView(
+                    "mdh_helloworld_message",
+                    $message["s_content"]
+                );
+
                 // Page number.
                 $page = Params::getParam("iDisplayPage");
                 if(!isset($page) || empty($page)) {
@@ -43,15 +49,16 @@ class Madhouse_HelloWorld_Controllers_Web extends WebSecBaseModel
 
                 // Get all messages.
                 $messages = Madhouse_HelloWorld_Models_Message::newInstance()->listAll($page, $length);
+                $totalMessages = count(Madhouse_HelloWorld_Models_Message::newInstance()->listAll());
 
                 // Exports it to make it available to the view.
                 View::newInstance()->_exportVariableToView(
-                    "mdh_helloworld_message",
-                    $message["s_content"]
-                );
-                View::newInstance()->_exportVariableToView(
                     "mdh_helloworld_messages",
                     $messages
+                );
+                View::newInstance()->_exportVariableToView(
+                    "mdh_helloworld_messages_count",
+                    $totalMessages
                 );
                 break;
             default:
