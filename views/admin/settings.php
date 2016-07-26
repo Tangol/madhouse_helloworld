@@ -1,0 +1,1 @@
+<p><?php echo "Welcome to Madhouse HelloWorld settings!"; ?></p>

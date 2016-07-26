@@ -35,3 +35,27 @@ function mdh_is_helloworld()
     }
     return false;
 }
+
+/**
+ * Get the admin settings route URL.
+ *
+ * @return string
+ *
+ * @since  1.3.0
+ */
+function mdh_helloworld_admin_settings_url()
+{
+    return osc_route_admin_url("madhouse_helloworld_admin_settings");
+}
+
+/**
+ * Get the admin settings form action route URL.
+ *
+ * @return string
+ *
+ * @since 1.3.0
+ */
+function mdh_helloworld_admin_settings_post_url()
+{
+    return osc_route_admin_url("madhouse_helloworld_admin_settings_post");
+}

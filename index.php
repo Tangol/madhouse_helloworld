@@ -68,6 +68,20 @@ if (osc_version() >= 330) {
         'helloworld/show/',
         "madhouse_helloworld/views/web/show.php"
     );
+
+    osc_add_route(
+        "madhouse_helloworld_admin_settings",
+        "madhouse_helloworld/admin_settings/?",
+        "madhouse_helloworld/admin_settings/",
+        "madhouse_helloworld/views/admin/settings.php"
+    );
+
+    osc_add_route(
+        "madhouse_helloworld_admin_settings_post",
+        "madhouse_helloworld/admin_settings_post/?",
+        "madhouse_helloworld/admin_settings_post/",
+        "madhouse_helloworld/views/admin/settings.php"
+    );
 }
 
 /*
@@ -75,6 +89,7 @@ if (osc_version() >= 330) {
  *  REGISTER & ENQUEUE
  * ==========================================================================
  */
+
 
 /**
  * (hook: init) Registers scripts and styles.
@@ -84,3 +99,27 @@ function mdh_helloworld_load()
 {
 }
 osc_add_hook('init', 'mdh_helloworld_load');
+
+/*
+ * ==========================================================================
+ *  ROUTES
+ * ==========================================================================
+ */
+
+osc_add_hook('admin_menu_init', function () {
+    osc_add_admin_submenu_divider(
+        "plugins",
+        __("Madhouse HelloWorld", "madhouse_helloworld"),
+        "madhouse_helloworld",
+        "administrator"
+    );
+
+    osc_add_admin_submenu_page(
+        "plugins",
+        __('Settings', "madhouse_helloworld"),
+        mdh_helloworld_admin_settings_url(),
+        "madhouse_helloworld_admin_settings",
+        "administrator"
+    );
+});
+
