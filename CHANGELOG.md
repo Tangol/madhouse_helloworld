@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0 (27/07/2016)
+
+- Add pagination to web/show.php
+- Add admin/settings.php as a basic settings page
+- Set version @ database on install
+- Upgrade to 1.3.0 in index.php
+
 ## 1.2.0 (17/07/2016)
 
 - Switch to semver version (X.X.X)
