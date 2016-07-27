@@ -23,7 +23,7 @@ class Madhouse_HelloWorld_Controllers_Admin extends AdminSecBaseModel
         osc_set_preference("i_display_length", $numberOfMessagesPerPage, "plugin_madhouse_helloworld", "INTEGER");
 
         // Redirect and display a nice message!
-        osc_add_flash_ok_message(__("Successfully updated settings!", "madhouse_helloworld"));
+        osc_add_flash_ok_message(__("Successfully updated settings!", "madhouse_helloworld"), "admin");
         $this->redirectTo(mdh_helloworld_admin_settings_url());
     }
 
