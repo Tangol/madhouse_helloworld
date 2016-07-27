@@ -55,7 +55,6 @@ function mdh_helloworld_count_messages()
     return (int) View::newInstance()->_get("mdh_helloworld_messages_count");
 }
 
-
 /**
  * Tells if the current page belongs to HelloWorld.
  * @return Bool true if the current page is helloworld, false otherwise.
