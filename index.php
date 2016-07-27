@@ -4,7 +4,7 @@ Plugin Name: Madhouse HelloWorld
 Short Name: madhouse_helloworld
 Plugin URI: http://wearemadhouse.wordpress.com/2013/10/11/how-to-develop-osclass-plugins/
 Description: Example and starter plugin for Osclass, designed by Madhouse.
-Version: 1.2.0
+Version: 1.3.0
 Author: Madhouse
 Author URI: http://wearemadhouse.wordpress.com/
 Plugin update URI: madhouse-helloworld
@@ -32,6 +32,9 @@ require_once __DIR__ . "/oc-load.php";
 function mdh_helloworld_install()
 {
     mdh_helloworld_import_sql(__DIR__ . "/assets/model/install.sql");
+
+    osc_set_preference("version", "1.0.0", "plugin_madhouse_helloworld");
+    osc_reset_preferences();
 }
 osc_register_plugin(osc_plugin_path(__FILE__), 'mdh_helloworld_install');
 
@@ -43,8 +46,21 @@ osc_register_plugin(osc_plugin_path(__FILE__), 'mdh_helloworld_install');
 function mdh_helloworld_uninstall()
 {
     mdh_helloworld_import_sql(__DIR__ . "/assets/model/uninstall.sql");
+
+    osc_delete_preference("i_display_length", "plugin_madhouse_helloworld");
+    osc_delete_preference("version", "plugin_madhouse_helloworld");
+    osc_reset_preferences();
 }
 osc_add_hook(osc_plugin_path(__FILE__) . '_uninstall', 'mdh_helloworld_uninstall');
+
+if (version_compare(osc_get_preference("version", "plugin_madhouse_helloworld"), "1.3.0") < 0) {
+    // Set a default value for new settings.
+    osc_set_preference("i_display_length", 1, "plugin_madhouse_helloworld");
+
+    // Upgrade the version @ database
+    osc_set_preference("version", "1.3.0", "plugin_madhouse_helloworld");
+    osc_reset_preferences();
+}
 
 /*
  * ==========================================================================
